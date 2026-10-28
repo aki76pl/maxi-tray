@@ -1,7 +1,9 @@
 # Maxi Tray
 
 Desktopowy generator pudełek do druku 3D.
-Działa offline na Windows 11 (x64 / ARM) i macOS na Apple Silicon (M1–M5).
+Działa offline na Windows 11 (x64 / ARM) i macOS na Apple Silicon (M1–M5), a także w przeglądarce.
+
+**[Otwórz w przeglądarce](https://aki76pl.github.io/maxi-tray/)** · **[Pobierz aplikację](https://github.com/aki76pl/maxi-tray/releases/latest)**
 
 ## Modele
 
@@ -35,7 +37,7 @@ npm install
 npm start
 ```
 
-Wersja przeglądarkowa: `npm run web`, potem otwórz http://localhost:5173.
+Wersja przeglądarkowa lokalnie: `npm run web`, potem otwórz http://localhost:5173. Każdy push do `main` publikuje ją na GitHub Pages (workflow `.github/workflows/pages.yml`).
 
 ## Budowanie instalatorów
 
