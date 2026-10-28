@@ -1,0 +1,65 @@
+{
+  "name": "maxi-tray",
+  "productName": "Maxi Tray",
+  "version": "1.0.0",
+  "description": "Generator pudełek z przegródkami do druku 3D (STL / 3MF)",
+  "main": "main.js",
+  "author": "Artur Kanecki",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "node scripts/vendor.mjs",
+    "start": "node scripts/vendor.mjs && electron .",
+    "web": "node scripts/vendor.mjs && node scripts/serve.mjs",
+    "test": "node test/geometry.test.mjs",
+    "dist:win": "node scripts/vendor.mjs && electron-builder --win --x64 --publish never",
+    "dist:win-arm": "node scripts/vendor.mjs && electron-builder --win --arm64 --publish never",
+    "dist:mac": "node scripts/vendor.mjs && electron-builder --mac --arm64 --publish never"
+  },
+  "build": {
+    "appId": "pl.kanecki.maxitray",
+    "productName": "Maxi Tray",
+    "files": [
+      "main.js",
+      "preload.cjs",
+      "app/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.png",
+      "artifactName": "${productName}-${version}-win-${arch}-setup.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.graphics-design",
+      "identity": "-",
+      "icon": "build/icon.png",
+      "artifactName": "${productName}-${version}-mac-${arch}.${ext}",
+      "minimumSystemVersion": "12.0",
+      "hardenedRuntime": false
+    },
+    "directories": {
+      "output": "dist"
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-win-${arch}-portable.${ext}"
+    }
+  },
+  "devDependencies": {
+    "electron": "^45.1.0",
+    "electron-builder": "^26.18.0",
+    "manifold-3d": "^3.5.4",
+    "three": "^0.186.1"
+  },
+  "type": "module"
+}

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'">
+  <title>Maxi Tray</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three/three.module.js",
+        "three/addons/": "./vendor/three/addons/",
+        "manifold-3d": "./vendor/manifold/manifold.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <aside class="sidebar">
+    <header class="brand">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 8l9-4 9 4v8l-9 4-9-4z M3 8l9 4 9-4 M12 12v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span>Maxi Tray</span>
+      <div class="spacer"></div>
+      <button class="icon" id="undo" title="Cofnij (Ctrl+Z)">↶</button>
+      <button class="icon" id="redo" title="Ponów (Ctrl+Y)">↷</button>
+    </header>
+
+    <button class="model-button" id="modelButton" title="Zmień model">
+      <span class="model-icon" id="modelIcon"></span>
+      <span class="model-text"><strong id="modelName"></strong><small id="modelSub"></small></span>
+      <span class="chev">▾</span>
+    </button>
+
+    <div id="fields"></div>
+    <div class="hint model-hint" id="modelHint"></div>
+
+    <section class="stats" id="stats"></section>
+
+    <footer class="files">
+      <button id="openProject">Otwórz projekt…</button>
+      <button id="saveProject">Zapisz projekt…</button>
+    </footer>
+  </aside>
+
+  <main>
+    <nav class="toolbar">
+      <div class="tabs">
+        <button class="tab active" data-tab="view3d">Podgląd 3D</button>
+        <button class="tab" data-tab="grid">Przegródki</button>
+      </div>
+      <div class="spacer"></div>
+      <label class="color" title="Kolor podglądu"><input type="color" id="color" value="#2f80d1"></label>
+      <button class="primary" id="exportStl" title="Wszystkie części na jednym stole">Pobierz STL</button>
+      <button class="primary ghost" id="export3mf" title="Każda część jako osobny obiekt">Pobierz 3MF</button>
+      <button class="ghost" id="exportParts" title="Każda część w osobnym pliku STL">Części osobno…</button>
+    </nav>
+
+    <div class="view" id="view3d">
+      <canvas id="canvas3d"></canvas>
+      <div class="dims" id="dims"></div>
+      <button class="stack-toggle hidden" id="stackToggle" title="Pokaż drugą tackę ustawioną na tej">Pokaż w stosie</button>
+    </div>
+
+    <div class="view hidden" id="grid">
+      <div class="gridtools">
+        <div class="segmented" id="tool">
+          <button data-v="x" title="Kliknij przegródkę, aby podzielić ją ścianką pionową">┃ Podziel w pionie</button>
+          <button data-v="y" title="Kliknij przegródkę, aby podzielić ją ścianką poziomą">━ Podziel w poziomie</button>
+          <button data-v="merge" title="Kliknij przegródkę, aby połączyć ją z sąsiednią">✕ Usuń ściankę</button>
+        </div>
+        <label class="inline">na
+          <select id="splitCount"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+          części</label>
+        <div class="spacer"></div>
+        <label class="inline">Siatka
+          <input type="number" id="cols" min="1" max="20" value="3"> ×
+          <input type="number" id="rows" min="1" max="20" value="2">
+          <button id="applyGrid">Zastosuj</button></label>
+        <button id="equalize" title="Wyrównaj rozmiary przegródek">Wyrównaj</button>
+        <button id="resetGrid">Wyczyść</button>
+      </div>
+      <div class="gridwrap"><svg id="gridSvg"></svg></div>
+      <p class="hint center">Przeciągnij ściankę, aby zmienić rozmiar przegródek. Wymiary w środku to wnętrze przegródki (szer. × gł.).</p>
+    </div>
+
+    <div class="toast hidden" id="toast"></div>
+  </main>
+
+  <div class="picker hidden" id="picker" role="dialog" aria-label="Wybierz model">
+    <div class="picker-card">
+      <header><h3>Wybierz model</h3><button class="icon" id="pickerClose" title="Zamknij">✕</button></header>
+      <div class="picker-grid" id="pickerGrid"></div>
+    </div>
+  </div>
+
+  <script type="module" src="renderer.js"></script>
+</body>
+</html>
