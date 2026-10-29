@@ -1,0 +1,14 @@
+{
+  "name": "Maxi Tray",
+  "short_name": "Maxi Tray",
+  "description": "Generator pudełek z przegródkami do druku 3D (STL / 3MF)",
+  "lang": "pl",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#e7e7e3",
+  "theme_color": "#1f62b0",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

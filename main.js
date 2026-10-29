@@ -18,7 +18,8 @@ const MIME = {
   '.wasm': 'application/wasm',
   '.json': 'application/json',
   '.svg': 'image/svg+xml',
-  '.png': 'image/png'
+  '.png': 'image/png',
+  '.webmanifest': 'application/manifest+json'
 };
 
 function serveApp() {
