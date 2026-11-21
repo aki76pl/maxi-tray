@@ -7,9 +7,10 @@ import gridfinity from './gridfinity.js';
 import slide from './slide.js';
 import { foldingBox, foldingTray } from './folding.js';
 import paints from './paints.js';
+import paintbox from './paintbox.js';
 
 // Order matches the model picker.
-export const MODELS = [partition, boxHardware, walltray, carrying, boxPrinted, gridfinity, slide, foldingBox, foldingTray, paints];
+export const MODELS = [partition, boxHardware, walltray, carrying, boxPrinted, gridfinity, slide, foldingBox, foldingTray, paints, paintbox];
 
 export const MODEL_BY_ID = Object.fromEntries(MODELS.map((m) => [m.id, m]));
 

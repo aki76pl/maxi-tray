@@ -19,6 +19,7 @@ Działa offline na Windows 11 (x64 / ARM) i macOS na Apple Silicon (M1–M5), a 
 | Pudełko składane | arkusz | druk na płasko, zawiasy z cienkiej warstwy, wieczko z klapką |
 | Tacka składana | arkusz, przegrody | druk na płasko, wkładane przegrody krzyżowe |
 | Stojak na farby | stojak | otwory okrągłe, kwadratowe lub sześciokątne, siatka albo plaster miodu, płaski lub schodkowy; gotowe wymiary butelek (Vallejo, AK, Ammo, Hataka, Army Painter, Tamiya), wycięcie na palec, otwór do wypychania |
+| Pudełko na farby | pudełko, wieczko | zamykane: otwory na butelki w dnie, ścianki ponad zakrętki; wieczko nakładane (z kołnierzem) albo wsuwane w rowki; te same kształty, układy i gotowe wymiary co stojak |
 
 ## Co potrafi
 
