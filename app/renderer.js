@@ -37,6 +37,14 @@ function grid() {
 
 function setParam(key, value) {
   state.params[state.model] = { ...state.params[state.model], [key]: value };
+  // Editing a value that a preset filled in turns the preset into "custom".
+  for (const f of model().fields) {
+    if (f.type !== 'select' || f.key === key) continue;
+    const opt = f.options.find((o) => o.v === rawParams()[f.key]);
+    if (opt?.set && key in opt.set && opt.set[key] !== value) {
+      state.params[state.model] = { ...state.params[state.model], [f.key]: f.options[0].v };
+    }
+  }
 }
 
 function snapshot() {
@@ -113,7 +121,7 @@ function renderModel() {
       continue;
     }
     if (!sectionEl) newSection('');
-    const el = f.type === 'choice' ? choiceField(f) : numberField(f);
+    const el = f.type === 'choice' ? choiceField(f) : f.type === 'select' ? selectField(f) : numberField(f);
     el._show = f.show;
     sectionEl.appendChild(el);
   }
@@ -163,6 +171,24 @@ function choiceField(f) {
   return el;
 }
 
+// Drop-down of presets; each option's `set` fills in other parameters.
+function selectField(f) {
+  const el = document.createElement('div');
+  el.className = 'select';
+  el.dataset.key = f.key;
+  el.innerHTML = `<label>${f.label}</label><select>${f.options.map((o) => `<option value="${o.v}">${o.label}</option>`).join('')}</select>`;
+  const sel = el.querySelector('select');
+  sel.addEventListener('change', () => {
+    const opt = f.options.find((o) => String(o.v) === sel.value);
+    pushHistory();
+    setParam(f.key, opt.v);
+    for (const [k, v] of Object.entries(opt.set ?? {})) setParam(k, v);
+    syncInputs();
+    refresh();
+  });
+  return el;
+}
+
 function syncInputs() {
   const raw = rawParams();
   const p = params();
@@ -177,6 +203,10 @@ function syncInputs() {
   }
   for (const el of document.querySelectorAll('#fields .choice')) {
     for (const b of el.querySelectorAll('button')) b.classList.toggle('active', b.dataset.v === String(raw[el.dataset.key]));
+    el.classList.toggle('hidden', el._show ? !el._show(p) : false);
+  }
+  for (const el of document.querySelectorAll('#fields .select')) {
+    el.querySelector('select').value = String(raw[el.dataset.key]);
     el.classList.toggle('hidden', el._show ? !el._show(p) : false);
   }
   for (const s of document.querySelectorAll('#fields section')) {

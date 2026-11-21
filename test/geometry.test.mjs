@@ -17,7 +17,10 @@ const cases = [
   ['walltray', { mount: 'magnet', angle: 20 }],
   ['gridfinity', { part: 'baseplate', unitsX: 3, unitsY: 2 }],
   ['gridfinity', { unitsX: 1, unitsY: 1, lip: 0, magnets: 1, heightUnits: 3 }],
-  ['foldingtray', { cols: 3, rows: 3 }]
+  ['foldingtray', { cols: 3, rows: 3 }],
+  ['paints', { shape: 'hex', layout: 'stagger', notch: 1, pushHole: 1 }],
+  ['paints', { shape: 'square', stepped: 0, rows: 1, cols: 1, notch: 1 }],
+  ['paints', { bottle: 'tamiya10', dia: 35, holeDepth: 15, layout: 'stagger', fillet: 0 }]
 ];
 
 let failed = 0;

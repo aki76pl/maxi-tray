@@ -206,6 +206,9 @@ main { flex: 1; display: flex; flex-direction: column; min-width: 0; position: r
 .choice { margin-bottom: 10px; }
 .choice > label { display: block; margin-bottom: 4px; }
 .choice .segmented { display: flex; }
+.select { margin-bottom: 10px; }
+.select > label { display: block; margin-bottom: 4px; }
+.select select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
 .choice .segmented button { flex: 1; }
 .segmented.icons button { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 4px; }
 .segmented.icons svg { width: 28px; height: 28px; }

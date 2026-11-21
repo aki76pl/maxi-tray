@@ -14,6 +14,7 @@ export const ICONS = {
   slide: svg(`<path d="${tray}"/><path d="M6 11l12-6 10 5 M18 5v2"/><path d="M8 12l12-6"/>`),
   foldingbox: svg('<path d="M10 16l6-3 6 3-6 3z M10 16v4l6 3 6-3v-4 M16 19v4"/><path d="M4 13l6 3 M28 13l-6 3 M16 13l-4-6 8-4 4 6"/>'),
   foldingtray: svg('<path d="M10 16l6-3 6 3-6 3z M10 16v4l6 3 6-3v-4 M16 19v4"/><path d="M4 13l6 3 M28 13l-6 3 M10 13l6-3 6 3"/>'),
+  paints: svg('<path d="M4 18l12-6 12 6-12 6z M4 18v3l12 6 12-6v-3 M16 24v3"/><path d="M9 17V8.5a2 1 0 0 1 4 0V19 M14.5 14V5.5a2 1 0 0 1 4 0V16 M19.5 17V8.5a2 1 0 0 1 4 0V19"/><path d="M9 8.5a2 1 0 0 0 4 0 M14.5 5.5a2 1 0 0 0 4 0 M19.5 8.5a2 1 0 0 0 4 0"/>'),
   single: svg('<path d="M6 16l10-5 10 5-10 5z M6 16v4l10 5 10-5v-4 M16 21v4"/>'),
   stack: svg('<path d="M6 12l10-5 10 5-10 5z M6 12v4l10 5 10-5v-4 M16 17v4"/><path d="M6 19v3l10 5 10-5v-3"/>')
 };
