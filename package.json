@@ -1,7 +1,7 @@
 {
   "name": "maxi-tray",
   "productName": "Maxi Tray",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Generator pudełek z przegródkami do druku 3D (STL / 3MF)",
   "main": "main.js",
   "author": "Artur Kanecki",
